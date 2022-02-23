@@ -1,0 +1,171 @@
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap');
+/*Sass variables*/
+$font-p: 'Cabin', sans-serif;;
+$col-1: rgb(19, 44, 68);
+$text-col: rgb(83, 81, 81);
+$list-text: rgb(19, 44, 68);
+$p-text-col: rgb(34, 80, 122);
+
+/*Global Styles*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+/*General styles- reusable*/
+.d-f-r {
+  display: flex;
+}
+.d-f-col {
+  display: flex;
+  flex-direction: column;
+}
+.jc-space-between {
+  justify-content: space-between;
+}
+.a-items-center {
+  align-items: center;
+}
+/*Header Styling*/
+.head-bar {
+  color: white;
+  font-family: $font-p;
+  margin-top: 0;
+  height: 4rem;
+  background-image: linear-gradient(to right, rgb(42, 100, 155), rgb(30, 129, 136));
+  border-bottom: rgb(69, 156, 238) solid 3px;
+}
+.head-bar h2 {
+  font-size: 2rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 1rem;
+}
+.search-bar {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 15px;
+  
+  ;
+}
+.search-field {
+  margin: 0 0 0 0;
+  margin-top: auto;
+  height:30px;
+  margin-bottom: auto;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  padding-left: 15px;
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
+}
+.cancel-icon {
+  color: rgba($color: #000000, $alpha: 0.5);
+  width:25px;
+  height:25px;
+}
+.search-icon {
+  background-color: rgba($color: #ffffff, $alpha: 0.3);
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+  padding: 6px;
+}
+.search-icon:hover {
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
+  cursor: pointer;
+}
+.toggle-switch {
+  display: flex;
+  margin: auto 1rem auto auto;
+  width:45px;
+  height:25px;
+  border:  3px white solid;
+  border-radius: 18px ;
+  background-color: rgba($color: #ffffff, $alpha: 0.3);
+}
+.toggle-ball-on {
+  background-color: rgb(252, 252, 252);
+  border-radius: 50%;
+  height: 100%;
+  width: 20px;
+}
+.toggle-ball{
+  background-color: rgb(252, 252, 252);
+  border-radius: 50%;
+  height: 100%;
+  width: 20px;
+  margin-left: auto;
+
+}
+.toggle-ball:hover, .toggle-ball-on:hover {
+  cursor: pointer;
+}
+/** Main content */
+.main-content {
+  z-index: 1;
+  margin: 0 auto 0;
+  background-color: #ffffff;
+}
+.list-item {
+  border-top: rgba($color: #000000, $alpha: 0.5) 1px solid;
+}
+.filter-bar {
+  padding:10px;
+  color: $text-col;
+  font-family: $font-p;
+}
+.icon-filter {
+  color: $text-col;
+  margin: auto auto auto 3px;
+ 
+}
+.icon-dots {
+  margin: auto 10px auto auto;
+}
+.icon-dots:hover, .icon-filter:hover, .complete-icon:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+}
+
+/* List item */
+.list-item h2 {
+  color: $list-text;
+  font-weight: 900;
+  margin: 10px 0 5px 15px;
+}
+.list-item h4 {
+  font-style: italic;
+  color: grey;
+  font-size: 0.9rem;
+  margin: 0 0 0 15px;
+  padding-bottom: 5px;
+}
+.list-item p {
+  color: $p-text-col;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 0 15px;
+  padding-bottom: 10px;
+}
+.list-item {
+  font-family: $font-p;
+  min-height: 80px;
+  border-bottom: solid 1px grey;
+}
+.task {
+  max-width: 80%;
+}
+.complete-icon {
+  color: rgb(30, 136, 87);
+  height: 50px;
+  width: 50px;
+  margin: auto 40px auto auto;
+}
