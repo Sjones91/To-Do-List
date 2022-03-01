@@ -1,36 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import {TiTickOutline} from "react-icons/ti";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import en from 'date-fns/locale/en-GB';
+import tasks from '../taskData';
 registerLocale('en', en)
 
-const NewItem = (props, cancelTask) => {
+const NewItem = (props, cancelTask, updateTasks, tasks) => {
     const [dueDate,setDueDate] = useState("");
-    const newDate = dueDate.toString().substring(3,16);
+    const [taskList,setTaskList] = useState(tasks);
     const [taskItem, setTaskItem] = useState({
         title: "",
         description: "",
-        date: dueDate.toString().substring(3,16)
+        date: ""
     })
-    const handleSubmit= ()=> {
-        setTaskItem(taskItem.title= "fdfd", taskItem.description="fdfd", taskItem.date= newDate )
-        prevent
+    const handleDate = (e) => {
+        const value = dueDate
+        const dateNew = value.toString().substring(3,16);
+        console.log(dateNew)
+        setTaskItem({...taskItem, date: dateNew})
     }
-    console.log(taskItem)
+    const handleChange = (e)=> {
+        const title = e.target.name;
+        const value = e.target.value;
+        setTaskItem({...taskItem, [title]: value})
+    }
+    
+    useEffect(()=> {
+        handleDate()
+        
+    },[dueDate])
     return (
         <form className='d-f-col new-task '>
             <h2>Add a new task.</h2>
             <h3 >Enter a title.</h3>
-            <input className='text-input' id="title" type="text"></input>
+            <input className='text-input' id="title" name="title" type="text" onChange={handleChange}></input>
             <h3>Enter a task details.</h3>
-            <textarea type="text" className='text-input text-area-input'></textarea>
+            <textarea name="description"type="text" className='text-input text-area-input' onChange={handleChange}></textarea>
             <h3>Select a due date</h3>
-            <DatePicker className= "date-box"selected={dueDate} onChange={(Date) => setDueDate(Date)}/>
+            <DatePicker name="date"className= "date-box"selected={dueDate} onChange={(Date) => {setDueDate(Date); handleDate(dueDate)}}/>
             <div className='d-f-r btn-div'>
-                <button className="btn" onClick={handleSubmit}>Add Task</button>
+                <button className="btn" type="button" onClick={()=> handleSubmit()}>Add Task</button>
                 <button className="btn" type='submit' onClick={()=> props.cancelTask()}>Cancel</button>
             </div>
         </form>

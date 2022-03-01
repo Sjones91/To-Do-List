@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import ListItem from "../components/subComponents/ListItem.js";
 import FilterBar from './filterbar.js';
@@ -13,17 +13,14 @@ const MainContent = () => {
     const cancelTask =()=> {
         setNewTask(false)
     }
-    const newTaskItem = (e)=> {
+    
+    useEffect(()=> {
         
-    }
-
-
-
-
+    },[tasks])
     
     if(newTask) {
         return (
-        <AddNewTask cancelTask={cancelTask}/>
+        <AddNewTask  cancelTask={cancelTask}/>
         )
     }
     return (
