@@ -122,13 +122,24 @@ $p-text-col: rgb(34, 80, 122);
   color: $text-col;
   font-family: $font-p;
 }
+.filter-bar .btn {
+  margin-left: auto;
+}
+.select-box {
+  margin-left: 10px;
+  background: rgba(181, 229, 233, 0.301);
+  border: none;
+  border-radius: 5px;
+  color: $p-text-col;
+  font-weight: 600;
+}
 .icon-filter {
   color: $text-col;
   margin: auto auto auto 3px;
  
 }
 .icon-dots {
-  margin: auto 10px auto auto;
+  margin: auto 10px auto 0;
 }
 .icon-dots:hover, .icon-filter:hover, .complete-icon:hover {
   cursor: pointer;
@@ -168,4 +179,62 @@ $p-text-col: rgb(34, 80, 122);
   height: 50px;
   width: 50px;
   margin: auto 40px auto auto;
+}
+/*New task*/
+.new-task {
+  margin:  40px auto;
+  width: 75%;
+  justify-items: center;
+}
+.new-task h2, h3 {
+  color: $p-text-col;
+}
+.new-task h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.title-input {
+  max-width: 250px;
+}
+.text-input {
+  border: rgb(165, 196, 226) solid 2px;
+  border-radius: 5px;
+  height: 1.5rem;
+  max-width: 250px;
+  background: rgba(181, 229, 233, 0.301);
+  font-size: 1.2rem;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+  margin-bottom: 0;
+}
+.text-area-input {
+  min-height: 6rem;
+}
+.date-box {
+  background: rgba(181, 229, 233, 0.301);
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+  height: 25px;
+  padding-top: 0.25rem;
+  padding-left: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.btn {
+  background: $p-text-col;
+  opacity:90%;
+  color: white;
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+
+}
+.btn:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+.btn-div {
+  width: 50%;
+  margin-left: 0;
+  justify-content: space-between;
 }

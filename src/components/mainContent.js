@@ -2,22 +2,43 @@ import React from 'react'
 import { useState } from 'react'
 import ListItem from "../components/subComponents/ListItem.js";
 import FilterBar from './filterbar.js';
-import taskData from "../taskData.js"
+import taskData from "../taskData.js";
+import AddNewTask from "./addNewTask.js"
 const MainContent = () => {
-    const [tasks, setTasks] = useState(taskData)
-    const clickHandler = (e)=> {
-        const taskList = "";
-        alert("work")
+    const [tasks, setTasks] = useState(taskData);
+    const [newTask, setNewTask] = useState(true);
+    const addTask = ()=> {
+        setNewTask(true)
+    }
+    const cancelTask =()=> {
+        setNewTask(false)
+    }
+    const newTaskItem = (e)=> {
+        
+    }
+
+
+
+
+    
+    if(newTask) {
+        return (
+        <AddNewTask cancelTask={cancelTask}/>
+        )
     }
     return (
         <div className='main-content'>
-            <FilterBar/>
+            <FilterBar addTask={addTask}/>
             <div>
-                {tasks.map((task, index)=> {
+                {tasks.map((task,index)=> {
                     const {title, date, description} = task;
-                    console.log(title,date,description)
+                    const removeItem = (item)=> {
+                        const newList= tasks.filter((tasks)=> tasks.title !== title)
+                        setTasks(newList)
+                        console.log(newList, title)
+                    }
                     return (
-                        <ListItem key={index}title={title} date={date} description={description} clickHandler={clickHandler}/>
+                        <ListItem key={index}title={title} date={date} description={description} removeItem={removeItem}/>
                     )
                 })}
             </div>
