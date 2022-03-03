@@ -8,18 +8,13 @@ import en from 'date-fns/locale/en-GB';
 import tasks from '../taskData';
 registerLocale('en', en)
 
-const NewItem = (props, cancelTask, updateTasks, tasks) => {
+const NewItem = (props, cancelTask, handleSubmit) => {
     const [dueDate,setDueDate] = useState("");
-    const [taskList,setTaskList] = useState(tasks);
-    const [taskItem, setTaskItem] = useState({
-        title: "",
-        description: "",
-        date: ""
-    })
+    const [taskItem, setTaskItem] = useState()
+    const [test2, setTest2] = useState("this is a test");
     const handleDate = (e) => {
         const value = dueDate
         const dateNew = value.toString().substring(3,16);
-        console.log(dateNew)
         setTaskItem({...taskItem, date: dateNew})
     }
     const handleChange = (e)=> {
@@ -30,6 +25,7 @@ const NewItem = (props, cancelTask, updateTasks, tasks) => {
     
     useEffect(()=> {
         handleDate()
+        console.log(taskItem)
         
     },[dueDate])
     return (
@@ -42,7 +38,7 @@ const NewItem = (props, cancelTask, updateTasks, tasks) => {
             <h3>Select a due date</h3>
             <DatePicker name="date"className= "date-box"selected={dueDate} onChange={(Date) => {setDueDate(Date); handleDate(dueDate)}}/>
             <div className='d-f-r btn-div'>
-                <button className="btn" type="button" onClick={()=> handleSubmit()}>Add Task</button>
+                <button className="btn" type="button" onClick={()=> props.handleSubmit(taskItem)}>Add Task</button>
                 <button className="btn" type='submit' onClick={()=> props.cancelTask()}>Cancel</button>
             </div>
         </form>

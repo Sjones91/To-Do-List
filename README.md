@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+Project Information
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created to test my ability to create a basic CRUD app. The app displays by default 4 tasks which are imported from "taskData.js". 
+The add task button allows the user to add a new task with a title, description and a due date. when submitted ("Add Task" button), new task window is closed and the task list now displays the recently added task aswell as any other tasks which were not already marked off.
 
-## Available Scripts
+Further functionality to be added is a sortby fuction, a lightmode/darkmode fuction and a search task function. Buttons and components are already present on the application however lack functionality.
 
-In the project directory, you can run:
+Challenges.
 
-### `npm start`
+Building the app layout, buttons and implementing individual components was pretty straight forward. In the main content I stored the default data in a state value and mapped each list item by deconstruction the values in the array store in the state and populated the page with them.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Creating the "Add task" component wasnt to challenging either. The first challenge faced was passing the completed task fuction (Green tick) to the child and ensuring it filtered the original array, removing the current/clicked task item. With some trial and error I figured this out and the completed task fuctionality worked.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The final, and probably the hardest challenge, was adding the new task to the current array of tasks. 
+This required me to pass a function to the child component that used a state, only present in the child, and update the parent state with said data.
+Again, more testing, trial and error and I managed to pass the data into the parent components array. The only problem was it was passing the object inside an object into an array. This then caused the map function to go bananas an not display the array or tasks. I played around alot with the syntax, researched a little deeper online into parent/child state values and found i was passing updating the parent state with this:
 
-### `npm test`
+setTasks({...tasks, taskItem})
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This was creating a mess of arrays stored in objects that held objects nested in objects. The correct syntax was:
 
-### `npm run build`
+setTasks([...tasks, taskItem])
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Finally the project was functional to a level I was happy with. I decided not to persue adding the rest of the functionality for the time being as I was eager to resume the udemy course I was working through and learn new react concepts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project really gave me a much deeper understanding of map functions, passing props, and updating state values across components. 
